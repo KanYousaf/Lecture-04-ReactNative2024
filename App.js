@@ -35,6 +35,7 @@ export default function App() {
     setPressableColor("#2FA");
   };
 
+  // allowed emails are of domain @gmail.com, @uettaxila.edu.pk or @students.uettaxila.edu.pk
   const checkEmail = (email) => {
     const allowedEmails =
       /^[^\s@]+@(gmail\.com|uettaxila\.edu\.pk|students\.uettaxila\.edu\.pk)$/;
@@ -46,6 +47,9 @@ export default function App() {
     return true;
   };
 
+  //check password conditions:
+  // 1. atleast 8 characters and above
+  // 2. atleast one special character, one number or one Caps alphabet
   const checkPassword = (password) => {
     const allowedPassword =
       /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
@@ -58,17 +62,17 @@ export default function App() {
   };
 
   const handleSignUp = () => {
-    const emailIsValid = checkEmail(email);
-    const passwordIsValid = checkPassword(password);
-    const fNameIsValid = fName.trim() !== "";
-    const sNameIsValid = sName.trim() !== "";
+    const emailValidity = checkEmail(email);
+    const passwordValidity = checkPassword(password);
+    const fNameValidity = fName.trim() !== "";
+    const sNameValidity = sName.trim() !== "";
 
-    setEmailValid(emailIsValid);
-    setPasswordValid(passwordIsValid);
-    setFNameValid(fNameIsValid);
-    setSNameValid(sNameIsValid);
+    setEmailValid(emailValidity);
+    setPasswordValid(passwordValidity);
+    setFNameValid(fNameValidity);
+    setSNameValid(sNameValidity);
 
-    if (emailIsValid && passwordIsValid && fNameIsValid && sNameIsValid) {
+    if (emailValidity && passwordValidity && fNameValidity && sNameValidity) {
       setSuccessMessage("Profile Created Successfully");
       setEmail("");
       setPassword("");
